@@ -1,0 +1,47 @@
+<article class="post-card post">
+    {{if .Params.image}}
+    <a class="post-card-image-link" href="{{ .Permalink }}">
+      <div class="post-card-image" style="background-image: url({{.Params.image | absURL}})"></div>
+    </a>
+    {{else}}
+    <a class="post-card-image-link" href="{{ .Permalink }}">
+      <div class="post-card-image" style="background-image: url({{$.Site.BaseURL}}defimg/{{ index (seq 7 | shuffle) 0 }}.jpg)"></div>
+    </a>    
+    {{end}}
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="{{ .Permalink }}">
+          <header class="post-card-header">
+              {{if .Params.tags }}<span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
+              #{{$tag}} {{end}} </span>
+              {{ end }}
+              <h2 class="post-card-title">{{.Title}}</h2>
+          </header>
+          <section class="post-card-excerpt">
+              {{ if .Description }} 
+                <p>{{ .Description | markdownify }}</p>
+              {{else}}
+                <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated }} ... {{end}} </p>
+              {{end}}
+          </section>
+      </a>
+
+      {{ $author := index .Site.Data.authors (or .Params.author .Site.Params.author)}}
+      {{ $authorname := or $author.name .Site.Params.author }}
+      {{ $authorbio := or $author.bio .Site.Params.bio }}
+      {{ $authorlocation := or $author.location .Site.Params.authorlocation }}
+      {{ $authorwebsite := or $author.website .Site.Params.authorwebsite .Site.BaseURL }}
+      {{ $authorthumbnail := or $author.thumbnail .Site.Params.logo }}
+      <footer class="post-card-meta">
+        <ul class="author-list">
+          <li class="author-list-item">
+            <div class="author-name-tooltip">
+              {{$authorname}}
+            </div>
+            <a href="/author/ghost/" class="static-avatar"><img class="author-profile-image" src="{{$authorthumbnail | absURL}}" alt="{{$authorname}}"></a>
+            </li>
+        </ul>
+        <span class="reading-time">{{math.Round (mul 1.5 .ReadingTime)}} min read</span>
+      </footer>
+    </div>
+</article>

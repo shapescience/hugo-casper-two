@@ -1,5 +1,5 @@
 {{ if .IsPage }} <!-- Credit V JEANTET -->
-    {{ with .Params.image }}
+    {{ with (or .Params.image .Site.Params.shareimage .Site.Params.cover) }}
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="{{ .  | absURL }}"/>
     {{ else }}
@@ -13,3 +13,5 @@
     <meta name="twitter:description" content="{{if .IsPage}}{{ .Description | default (substr .Summary 0 160) }}{{ else }}{{ .Site.Params.description }}{{ end }}"/>
     <meta name="twitter:url" content="{{.URL | absURL}}" />
     <meta name="twitter:site" content="@{{ .Site.Params.twitterName }}"/>
+
+

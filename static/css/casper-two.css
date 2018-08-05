@@ -44,23 +44,6 @@
     color: yellow;
 }
 
-@media (min-width: 900px) {
-    .ctsingle .post-feed {
-        margin-top: -70px;
-        padding-top: 0;    
-    } 
-    .ctsingle .site-nav {
-        position: relative;
-        top: -70px;
-    }    
-}
-
-@media (min-width: 795px) {  
-    .ctsingle .post-feed p {
-        font-size: 1.8rem;
-        line-height: 1.55em;
-    }
-}
 
 @media (max-width: 650px) {
     .hide {
@@ -71,6 +54,90 @@
     }
 }
 
-.post-full-content pre code {
+/*.post-full-content pre code {
     color: #e5eff5;
-}    
+}    */
+
+
+.blog-logo {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+
+    padding: 35px 40px;
+    margin: 0 0 30px;
+
+    border: none;
+    background: linear-gradient(to bottom,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 100%);
+
+    display: block;
+    float: left;
+    background: 0 0!important;
+    border: none!important;
+}
+.blog-logo svg {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+}
+
+.site-title svg {
+    height: 45px;  
+    width: auto;  
+    padding: 1px 0 5px;
+    margin-bottom: 13px;
+}
+
+.site-nav-logo {
+    margin-right: 0px;
+    padding: 0px 0;
+}
+
+.site-nav-logo svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin-top: 6px;
+
+    padding: 0px;
+    margin-right: 0px;
+}
+
+.floating-header-logo svg {
+    width: 20   px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.nav-post {
+    margin-left: 0px;
+}
+
+.figure-400 {
+    max-width: 400px;
+}
+.figure-300 {
+    max-width: 300px;
+}
+.figure-200 {
+    max-width: 200px;
+}
+/*figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+figure {
+    display: inline-block;
+    text-align: initial;
+    vertical-align: top;
+    position: relative;
+    margin: 0.5em;
+    font-size: 0.8em;
+    background: white;
+    overflow: hidden;
+}*/

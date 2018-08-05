@@ -1,0 +1,46 @@
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+           {{ $related := .Site.RegularPages.Related . | first 3 }}
+           {{if $related}}
+            <article class="read-next-card"
+                {{if .Params.image}}
+                    style="background-image: url({{.Params.image | absURL}})"
+                {{else}}
+                    style="background-image: url({{ .Site.Params.cover | absURL }})"
+                {{end}}
+            >
+                <header class="read-next-card-header">
+                    <small class="read-next-card-header-sitetitle">&mdash; {{.Site.Title}} &mdash;</small>
+                    <h3 class="read-next-card-header-title"><a href="{{.Permalink}}">{{.Title}}</a></h3>
+                </header>
+                <div class="read-next-divider">∞</div>
+                <div class="read-next-card-content">
+                    <ul>
+                        {{ with $related }}
+                            {{ range . }}
+                              <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </div>
+                <footer class="read-next-card-footer">
+                    {{if .Params.tags }}
+                    {{ range $index, $tag := .Params.tags }}
+                      <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/">#{{$tag}}</a>
+                    {{end}}
+                    {{end}}
+                    <a href="#"></a>
+                </footer>
+            </article>
+           {{ end }}
+
+           {{if .PrevInSection}}
+             {{with .PrevInSection}}{{partial "post-card.html" .}}{{end}}
+           {{end}}
+           {{if .NextInSection}}
+             {{with .NextInSection}}{{partial "post-card.html" .}}{{end}}
+           {{end}}
+        </div>
+    </div>
+</aside>

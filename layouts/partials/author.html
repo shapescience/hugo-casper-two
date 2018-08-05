@@ -1,0 +1,95 @@
+{{ $author := index .Site.Data.authors (or .Params.author .Site.Params.author)}}
+{{ $authorname := or $author.name .Site.Params.author }}
+{{ $authorbio := or $author.bio .Site.Params.bio }}
+{{ $authorlocation := or $author.location .Site.Params.authorlocation }}
+{{ $authorwebsite := or $author.website .Site.Params.authorwebsite .Site.BaseURL }}
+{{ $authorthumbnail := (or $author.thumbnail .Site.Params.logo | absURL)}}
+{{ $baseurl := .Site.BaseURL }}
+
+<section class="author-card">
+    <img class="author-profile-image" src="{{$authorthumbnail}}" alt="{{$authorname}}" />
+    <section class="author-card-content">
+      <h4 class="author-card-name"><a href="{{$baseurl}}author/{{$authorname}}">{{$authorname}}</a></h4>
+        <p>{{$authorbio}}</p>
+        <div class="author-meta">
+          {{if $author.linkedin}}
+            {{with $author.linkedin}}<a target="_blank" href={{.}}><span class="author-link icon-linkedin"></span></a>{{end}}
+          {{end}}
+          {{if $author.twitterName}}
+            {{with $author.twitterName}}<a target="_blank" href="http://twitter.com/{{.}}"><span class="author-link icon-twitter"></span></a>{{end}}
+          {{end}}
+        </div>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <!-- <a class="author-card-button" href="{{$baseurl}}/author/{{$authorname}}">Read More</a> -->
+  {{with $author.linkedin}}<a style="margin: 5px;" class="author-card-button" href="{{$baseurl}}/author/{{$authorname}}">LinkedIn</a>{{end}}
+  {{with $author.twitterName}}<a style="margin: 5px;" class="author-card-button" href="http://twitter.com/{{.}}">Twitter</a>{{end}}
+
+</div>
+
+
+<!-- 
+<footer class="post-full-footer"> 
+  <img class="author-profile-image" src="{{ $authorthumbnail | absURL}}" alt="{{$authorname}}" />
+  <span class="post-card-author"><a href="{{ $authorwebsite }}">{{$authorname}}</a></span>
+
+  <figure class="author-image">
+      <a class="img" href="{{$authorwebsite}}" style="background-image: url({{ $baseurl }}{{$authorthumbnail}})"><span class="hidden">{{$authorname}}'s picture</span></a>
+  </figure>
+
+    <section class="author">
+      <h4><a href="{{$authorwebsite}}">{{$authorname}}</a></h4>
+      {{if $authorbio}}
+      <p>{{$authorbio}}</p>
+      {{else}}
+      <p>Read <a href="{{.Site.BaseURL}}">more posts</a> by this author.</p>
+      {{end}}
+      <div class="author-meta">
+        {{with $authorlocation}}<span class="author-location icon-location">{{.}}</span>{{end}}
+        {{if $author.linkedin}}
+          {{with $author.linkedin}}<a target="_blank" href={{.}}><span class="author-link icon-linkedin"></span></a>{{end}}
+        {{end}}
+        {{if $author.twitterName}}
+          {{with $author.twitterName}}<a target="_blank" href="http://twitter.com/{{.}}"><span class="author-link icon-twitter"></span></a>{{end}}
+        {{end}}
+        {{with $authorwebsite}}<span class="author-link icon-link"><a target="_blank" href="{{.}}">{{.}}</a></span>{{end}}
+      </div>
+    </section>
+  </footer>
+
+
+
+{{$author := index .Site.Data.authors (or .Params.author .Site.Params.author)}}
+{{$authorname := or $author.name .Site.Params.author }}
+{{$authorbio := or $author.bio .Site.Params.bio }}
+{{$authorlocation := or $author.location .Site.Params.authorlocation }}
+{{$authorwebsite := or $author.website .Site.Params.authorwebsite }}
+{{$authorthumbnail := or $author.thumbnail .Site.Params.logo }}
+{{ $baseurl := .Site.BaseURL }}
+
+<figure class="author-image">
+    <a class="img" href="{{$authorwebsite}}" style="background-image: url({{ $baseurl }}{{$authorthumbnail}})"><span class="hidden">{{$authorname}}'s picture</span></a>
+</figure>
+
+{{ if not .Params.noauthor }}
+  <section class="author">
+    <h4><a href="{{$authorwebsite}}">{{$authorname}}</a></h4>
+    {{if $authorbio}}
+    <p>{{$authorbio}}</p>
+    {{else}}
+    <p>Read <a href="{{.Site.BaseURL}}">more posts</a> by this author.</p>
+    {{end}}
+    <div class="author-meta">
+      {{with $authorlocation}}<span class="author-location icon-location">{{.}}</span>{{end}}
+      {{if $author.linkedin}}
+        {{with $author.linkedin}}<a target="_blank" href={{.}}><span class="author-link icon-linkedin"></span></a>{{end}}
+      {{end}}
+      {{if $author.twitterName}}
+        {{with $author.twitterName}}<a target="_blank" href="http://twitter.com/{{.}}"><span class="author-link icon-twitter"></span></a>{{end}}
+      {{end}}
+      {{with $authorwebsite}}<span class="author-link icon-link"><a target="_blank" href="{{.}}">{{.}}</a></span>{{end}}
+    </div>
+  </section>
+{{end}}
+ -->

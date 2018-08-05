@@ -1,5 +1,26 @@
 # Casper Two
 
+## Fork
+This fork fixes a number of small issues:
+- `mathjax = true` to include `mathjax`
+- style fixes
+- related content
+- tag pages
+
+**To merge changes we would need to fix small issues because we use an svg logo, whose name is hardcoded.... it's easy to fix...**
+
+### Using the latest `casper style
+```bash
+wget https://github.com/TryGhost/Casper/archive/2.4.1.tar.gz
+tar xvf 2.4.1.tar.gz
+# need node, yarn...
+yarn install
+yarn dev
+# mv built/screen.css  $casper/static/built/screen.css
+```
+
+---
+
 [Casper Two](https://github.com/eueung/hugo-casper-two) is a port of the [Casper](https://github.com/TryGhost/Casper), the default personal blogging theme for Ghost. While a legacy version (v1.x) has [already been ported](https://github.com/vjeantet/hugo-theme-casper) to Hugo years ago, it is incompatible with the recent 2.x version. So I ended up porting this new Casper version. 
 
 ![Screenshot](https://raw.githubusercontent.com/eueung/hugo-casper-two/master/images/screenshot.png)
