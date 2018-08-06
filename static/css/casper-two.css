@@ -1,3 +1,26 @@
+#TableOfContents li, #TableOfContents ul, #TableOfContents ul li{
+    list-style: outside none none !important;
+}
+#TableOfContents ul, #TableOfContents li {
+  padding-right: 5px;
+  padding-left: 10px;
+}
+#TableOfContents > ul, #TableOfContents > ul > li, #TableOfContents > ul > li > ul {
+  padding-left: 0px;
+}
+#TableOfContents > ul > li > ul > li > a {
+  font-weight:800;
+}
+#TableOfContents > ul > li > ul > li ul > li > ul > li > a {
+  font-size: 18px;
+  box-shadow: inset 0 -1px 0 #3eb0ef38;
+}
+
+.post-full-toc {
+    // font-size: 2.2rem;
+    // line-height: 1.2em !important;
+}
+
 .pagination {
     position: relative;
     width: 100%;
@@ -116,28 +139,3 @@
 .nav-post {
     margin-left: 0px;
 }
-
-.figure-400 {
-    max-width: 400px;
-}
-.figure-300 {
-    max-width: 300px;
-}
-.figure-200 {
-    max-width: 200px;
-}
-/*figure img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-figure {
-    display: inline-block;
-    text-align: initial;
-    vertical-align: top;
-    position: relative;
-    margin: 0.5em;
-    font-size: 0.8em;
-    background: white;
-    overflow: hidden;
-}*/
