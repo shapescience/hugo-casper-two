@@ -9,7 +9,9 @@
     </header>
 
     {{if .Params.image}}
-      <figure class="post-full-image" style="background-image: url({{.Params.image | absURL}})"></figure>
+      <figure {{if .Params.artist}}title="{{.Params.artist}}"{{end}} class="post-full-image" style="background-image: url({{.Params.image | absURL}})">
+       {{if .Params.artist}}<figcaption style="color: white; margin:5px">{{.Params.artist | markdownify}}</figcaption>{{end}}
+      </figure>
     {{end}}
 
     <section class="post-full-content">
