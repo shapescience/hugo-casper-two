@@ -38,7 +38,7 @@
             <div class="author-name-tooltip">
               {{$authorname}}
             </div>
-            <a href="/author/ghost/" class="static-avatar"><img class="author-profile-image" src="{{$authorthumbnail | absURL}}" alt="{{$authorname}}"></a>
+            <a href="/about" class="static-avatar"><img class="author-profile-image" src="{{$authorthumbnail | absURL}}" alt="{{$authorname}}"></a>
             </li>
         </ul>
         <span class="reading-time">{{math.Round (mul 1.5 .ReadingTime)}} min read</span>
