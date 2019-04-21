@@ -1,4 +1,28 @@
 {{if .IsNode}}
+<style>
+  header {
+      transform: translateZ(0);
+//    -webkit-filter: saturate(1000%);
+    -webkit-animation: filter-animation 10s infinite;
+    //filter: hue-rotate(180deg);
+  }
+  @-webkit-keyframes filter-animation {
+    0% {
+        -webkit-filter: saturate(300%) hue-rotate(0deg);
+//      -webkit-filter: brightness(100%);
+    }
+    50% {
+        -webkit-filter: saturate(300%) hue-rotate(180deg);
+//      -webkit-filter: invert(.5);
+//      -webkit-filter: brightness(60%);
+    }
+    100% {
+        -webkit-filter: saturate(300%) hue-rotate(360deg);
+//      -webkit-filter: brightness(100%); 
+    }
+  }
+
+</style>
 <header class="site-header outer" style="background-image: url({{.Site.Params.cover | absURL}})">
 {{else}}
 <header class="site-header outer" style="background: #000;">
