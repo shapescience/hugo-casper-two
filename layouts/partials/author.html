@@ -10,7 +10,7 @@
     <img class="author-profile-image" src="{{$authorthumbnail}}" alt="{{$authorname}}" />
     <section class="author-card-content">
       <h4 class="author-card-name"><a href="{{$baseurl}}author/{{$authorname}}">{{$authorname}}</a></h4>
-        <p>{{$authorbio}}</p>
+        <p>{{$authorbio | markdownify}}</p>
         <div class="author-meta">
           {{if $author.linkedin}}
             {{with $author.linkedin}}<a target="_blank" href={{.}}><span class="author-link icon-linkedin"></span></a>{{end}}
