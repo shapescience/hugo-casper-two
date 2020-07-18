@@ -1,28 +1,49 @@
 {{ partial "head" . }}
 
-<body class="home-template"><div class="site-wrapper">
-  {{ partial "header" . }}
+<!-- lists of items in an individual category, tag -->
 
-<main id="site-main" class="site-main outer" role="main">
-  <div class="inner">
-    <div class="post-feed">
-      {{ $paginator := .Paginate (where .Pages "Type" "post") }}
-      {{ range $paginator.Pages }}
-        {{partial "post-card.html" .}}
-      {{ end }}
+<body class="home-template">
+    <div class="site-wrapper">
+        {{ partial "header" . }}
+
+        <main id="site-main" class="site-main outer" role="main">
+            <div class="inner">
+                <div class="post-feed">
+                    <article class="post-card post" style="min-height: 0px;">
+                        <h2 class="site-description">
+                            {{ $node := . }}
+                            {{ $relUrl := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
+                            {{ $es := split $relUrl "/" }}
+                            {{ $this := index $es (sub (len $es) 3) }}
+                            {{ $terms := index .Site.Taxonomies $this }}
+                            {{ range $key, $value := $terms.Alphabetical }}
+                            <span class="term {{ if (eq $node.Title ($value.Name | title)) }}term-current{{ end }}">
+                                    <a href="{{ $.Site.BaseURL }}{{ $this }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a>&nbsp;({{ $value.Count }})</span>
+                            {{ end }}
+                        </h2>
+                    </article>
+
+                    {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
+                    {{ range $paginator.Pages }}
+                        {{partial "post-card.html" .}}
+                    {{ end }}
+                </div>
+
+                <nav class="pagination" role="navigation">
+                    {{if .Paginator.HasPrev}}
+                    <a class="newer-posts" href="{{ .Paginator.Prev.URL }}">&larr; <span class="hide">Next Posts</span></a>
+                    {{end}}
+                    <span class="page-number"><span class="hide">Page {{ .Paginator.PageNumber }} of {{.Paginator.TotalPages}}</span>&nbsp;</span>
+                    {{if .Paginator.HasNext}}
+                    <a class="older-posts" href="{{ .Paginator.Next.URL }}"><span class="hide">Previous Posts</span> &rarr;</a>
+                    {{end}}
+                </nav>
+            </div>
+        </main>
+
+        {{ partial "footer" . }}
     </div>
 
-    <nav class="pagination" role="navigation">
-      {{if .Paginator.HasPrev}}
-          <a class="newer-posts" href="{{ .Paginator.Prev.URL }}">&larr; <span class="hide">Next Posts</span></a>
-      {{end}}
-      <span class="page-number"><span class="hide">Page {{ .Paginator.PageNumber }} of {{.Paginator.TotalPages}}</span>&nbsp;</span>
-      {{if .Paginator.HasNext}}
-          <a class="older-posts" href="{{ .Paginator.Next.URL }}"><span class="hide">Previous Posts</span> &rarr;</a>
-      {{end}}
-    </nav>
-  </div>
-</main>
-
-{{ partial "footer" . }}
-</div>{{ partial "js" . }}</body></html>
+    {{ partial "js" . }}
+</body>
+</html>

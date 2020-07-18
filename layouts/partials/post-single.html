@@ -1,3 +1,8 @@
+<style>
+figcaption > a {
+  color: white;
+}
+</style>
 <article class="post-full post"> 
 
     <header class="post-full-header">
@@ -13,7 +18,7 @@
 
     {{if .Params.image}}
       <figure {{if .Params.artist}}title="{{.Params.artist}}"{{end}} class="post-full-image" style="background-image: url({{.Params.image | absURL}})">
-       {{if .Params.artist}}<figcaption style="color: white; margin:5px">{{.Params.artist | markdownify}}</figcaption>{{end}}
+       {{if .Params.artist}}<figcaption style="color: white !important; margin:5px">{{.Params.artist | markdownify}}</figcaption>{{end}}
       </figure>
     {{end}}
 
